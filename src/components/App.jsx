@@ -92,25 +92,20 @@ const App = () => {
       />
       <Section>
 
-        {/* якщо є помилка, то відображаємо сповіщення */}
         {error && <p className="alertStyle">Something went wrong: {error.message}</p>}
 
-        {/* якщо результатів немає, то відображаємо сповіщення */}
         {noResults && <p className="alertStyle">No results found</p>}
 
-        {/* якщо завантаження, то відображаємо лоадер */}
         {isLoading && <Loader />}
         <ImageGallery images={images} onImageClick={handleImageClick} />
       </Section>
 
-      {/* якщо є результати і не завантаження, то відображаємо кнопку "Load more" */}
       {page < lastPage && !isLoading ? (
         <ButtonLoadMore label="Load more" handleLoadMore={handleLoadMore} />
       ) : (
         <div style={{ height: 40 }}></div>
       )}
 
-      {/* якщо showModal === true, то відображаємо модальне вікно */}
       {modal.showModal && <Modal onClose={toggleModal} largeImageURL={modal.largeImageURL} />}
     </div>
   );
